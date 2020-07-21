@@ -73,6 +73,8 @@ let App: React.FC<Props> = () => {
                         variant="outlined"
                         startIcon={<GithubIcon />}
                         color="primary"
+                        rel="noreferrer noopener"
+                        href="https://github.com/zardoy"
                     >
                         Dead Github Acc
                     </Button>
@@ -81,8 +83,10 @@ let App: React.FC<Props> = () => {
                         variant="outlined"
                         startIcon={<TwitchIcon />}
                         color="secondary"
+                        rel="noreferrer noopener"
+                        href="https://twitch.tv/zardoy"
                     >
-                        Boring Twitch Channel
+                        Silent Twitch Channel
                     </Button>
                 </div>
             </div>
