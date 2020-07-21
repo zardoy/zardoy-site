@@ -45,13 +45,6 @@ const appTheme = createMuiTheme({
     }
 });
 
-let ArrowsRight: React.FC = () => (
-    <code style={{
-        fontSize: "1.1em",
-        margin: "0 5px"
-    }}>{">".repeat(2)}</code>
-);
-
 let App: React.FC<Props> = () => {
     let classes = useStyles();
 
