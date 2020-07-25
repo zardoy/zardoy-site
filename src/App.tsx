@@ -1,5 +1,5 @@
 import React from "react";
-import { CssBaseline, makeStyles, Button, Typography, ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { CssBaseline, makeStyles, Button, Typography, ThemeProvider, createMuiTheme, Hidden } from "@material-ui/core";
 import { GitHub as GithubIcon } from "@material-ui/icons";
 import { Twitch as TwitchIcon } from "@icons-pack/react-simple-icons";
 import { blue } from "@material-ui/core/colors";
@@ -31,7 +31,9 @@ const useStyles = makeStyles({
     siteComments: {
         position: "absolute",
         top: "calc(100vh - 80px)",
-        width: "800px"
+        width: "100%",
+        maxWidth: "800px",
+        padding: "0 8px"
     }
 });
 
@@ -52,13 +54,28 @@ let App: React.FC<Props> = () => {
         <CssBaseline />
         <div className={classes.root}>
             <div className={classes.mainContainer}>
-                <Typography
-                    variant="h1"
-                    component="h1"
-                    className={classes.center}
+                <Hidden
+                    xsDown={true}
                 >
-                    Ruining The Games
+                    <Typography
+                        variant="h1"
+                        component="h1"
+                        className={classes.center}
+                    >
+                        RESIDENT SLEEPER
                 </Typography>
+                </Hidden>
+                <Hidden
+                    smUp={true}
+                >
+                    <Typography
+                        variant="h3"
+                        component="h3"
+                        className={classes.center}
+                    >
+                        RESIDENT SLEEPER
+                </Typography>
+                </Hidden>
                 <div className={classes.buttonsContainer}>
                     {/* BUTTONS */}
                     <Button
@@ -69,7 +86,7 @@ let App: React.FC<Props> = () => {
                         rel="noreferrer noopener"
                         href="https://github.com/zardoy"
                     >
-                        Dead Github Acc
+                        Me on Github
                     </Button>
                     <Button
                         size="large"
@@ -79,7 +96,7 @@ let App: React.FC<Props> = () => {
                         rel="noreferrer noopener"
                         href="https://twitch.tv/zardoy"
                     >
-                        Silent Twitch Channel
+                        My Twitch Channel
                     </Button>
                 </div>
             </div>
