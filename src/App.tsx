@@ -1,14 +1,15 @@
 import React from "react";
-import { CssBaseline, makeStyles, Button, Typography, ThemeProvider, createMuiTheme, Hidden } from "@material-ui/core";
+import { CssBaseline, makeStyles, Button, ThemeProvider, createMuiTheme } from "@material-ui/core";
 import { GitHub as GithubIcon } from "@material-ui/icons";
 import { Twitch as TwitchIcon } from "@icons-pack/react-simple-icons";
 import { blue } from "@material-ui/core/colors";
 import { DiscussionEmbed } from "disqus-react";
+import Video from "./Video";
 
 interface Props {
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         height: "100vh",
         display: "flex",
@@ -34,8 +35,13 @@ const useStyles = makeStyles({
         width: "100%",
         maxWidth: "800px",
         padding: "0 8px"
+    },
+    rightAdditionalLink: {
+        position: "absolute",
+        top: theme.spacing(1),
+        right: theme.spacing(1)
     }
-});
+}));
 
 const appTheme = createMuiTheme({
     palette: {
@@ -52,30 +58,16 @@ let App: React.FC<Props> = () => {
 
     return <ThemeProvider theme={appTheme}>
         <CssBaseline />
+        <Video />
+        <Button
+            href="https://soundcloud.com/bossofthisgym/gachimuchi-spank-it"
+            rel="noreferrer noopener"
+            className={classes.rightAdditionalLink}
+        >
+            Boss of this gym
+        </Button>
         <div className={classes.root}>
             <div className={classes.mainContainer}>
-                <Hidden
-                    xsDown={true}
-                >
-                    <Typography
-                        variant="h1"
-                        component="h1"
-                        className={classes.center}
-                    >
-                        RESIDENT SLEEPER
-                </Typography>
-                </Hidden>
-                <Hidden
-                    smUp={true}
-                >
-                    <Typography
-                        variant="h3"
-                        component="h3"
-                        className={classes.center}
-                    >
-                        RESIDENT SLEEPER
-                </Typography>
-                </Hidden>
                 <div className={classes.buttonsContainer}>
                     {/* BUTTONS */}
                     <Button
