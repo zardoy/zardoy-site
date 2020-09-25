@@ -53,6 +53,7 @@ let Video: React.FC<Props> = () => {
             url="https://soundcloud.com/user-778575298/gachimuchi-ultimate-medley-2"
             playing={musicPlaying}
             height={0}
+            loop
         />
     </>;
 };
