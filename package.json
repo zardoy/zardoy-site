@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^3.12.0",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@icons-pack/react-simple-icons": "^3.13.0",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "disqus-react": "^1.0.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-player": "^2.6.2",
-    "react-scripts": "4.0.0",
+    "react-player": "^2.7.2",
+    "react-scripts": "4.0.1",
     "youtube-player": "^5.5.2"
   },
   "homepage": "./",
@@ -34,11 +34,11 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@types/youtube-player": "^5.5.3",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.5",
-    "@types/react": "^16.9.54",
-    "@types/react-dom": "^16.9.9",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.3"
   }
 }
