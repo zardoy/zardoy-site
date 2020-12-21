@@ -36,7 +36,8 @@ let MainPage: React.FC<ComponentProps> = () => {
                 <Typography className={classes.header} variant="h1">Welcome!</Typography>
                 <Typography style={{ textAlign: "center" }} variant="h6">(Huge content coming soon!)</Typography>
             </Grid>
-            <Grid item>
+            {/* move to css */}
+            <Grid item style={{ textAlign: "center" }}>
                 <Button
                     size="large"
                     color="primary"
