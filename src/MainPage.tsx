@@ -34,7 +34,7 @@ let MainPage: React.FC<ComponentProps> = () => {
             {/* todo grid items */}
             <Grid item>
                 <Typography className={classes.header} variant="h1">Welcome!</Typography>
-                <Typography style={{ textAlign: "center" }} variant="h6">(Huge content coming soon!)</Typography>
+                <Typography style={{ textAlign: "center" }} variant="h6">Huge content coming soon!</Typography>
             </Grid>
             {/* move to css */}
             <Grid item style={{ textAlign: "center" }}>
