@@ -45,7 +45,7 @@ let MainPage: React.FC<ComponentProps> = () => {
                     startIcon={<GithubIcon />}
                     rel="noreferrer noopener"
                     href="https://github.com/zardoy"
-                >Me on GitHub</Button>
+                >ME ON GITHUB</Button>
             </Grid>
             {/* todo grid item with container */}
             <Grid item>
