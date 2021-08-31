@@ -1,0 +1,25 @@
+name: Deploy to GitHub pages
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install pnpm
+        # is it faster rather than installing via npm i -g?
+        run: curl -f https://get.pnpm.io/v6.7.js | node - add --global pnpm@6
+      - run: pnpm install
+      - run: pnpm build
+      - run: pnpm test
