@@ -1,11 +1,13 @@
 import React from 'react'
 import PageBlock from '../components/PageBlock'
+import MainBlock from './MainBlock'
 
 interface ComponentProps {}
 
 const Home: React.FC<ComponentProps> = () => {
     return (
-        <div tw="background-color-[#1e1e1e] text-white">
+        <div tw="bg-[#1e1e1e] text-white">
+            <MainBlock />
             {/* https://webkul.github.io/coolhue/ */}
             <PageBlock>
                 <h1

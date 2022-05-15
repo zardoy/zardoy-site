@@ -6,5 +6,6 @@ import ReactDOM from 'react-dom'
 import 'tailwindcss/base.css'
 
 import App from './App'
+import Home from './pages/Home'
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(<Home />, document.querySelector('#root'))
