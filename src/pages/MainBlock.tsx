@@ -1,8 +1,9 @@
 import React from 'react'
+import PseudoLoader from './PseudoLoader'
 
 const MainBlock: React.FC = () => {
     return <div tw='h-screen w-full m-6'>
-        <h1>Test</h1>
+        <PseudoLoader />
     </div>
 }
 
