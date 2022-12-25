@@ -1,7 +1,11 @@
 {
     "extends": "zardoy/react",
     "rules": {
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "curly": "off"
     },
-    "plugins": ["eslint-plugin-react", "eslint-plugin-react-hooks"]
+    "plugins": [
+        "eslint-plugin-react",
+        "eslint-plugin-react-hooks"
+    ]
 }

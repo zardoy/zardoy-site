@@ -2,6 +2,7 @@
 /// <reference types="@zardoy/vit/twin-sc" />
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './main.scss'
 
 import 'tailwindcss/base.css'
 
