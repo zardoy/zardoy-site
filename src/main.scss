@@ -51,4 +51,14 @@
         // transform: scale(0.8);
         margin-top: -50px;
     }
+
+    .github-icon {
+        $size: 35px;
+        width: $size;
+        height: $size;
+
+        display: inline;
+        margin-top: -12px;
+        margin-right: 8px;
+    }
 }

@@ -98,8 +98,8 @@ export default () => {
                     {'>'}
                     {'>'}
                 </code>
-                <a className="block font-sans rounded github-button" href="https://github.com/zardoy" target="_blank" rel="noopener noreferrer">
-                    {/* <Github /> */}
+                <a className="font-sans rounded github-button" href="https://github.com/zardoy" target="_blank" rel="noopener noreferrer">
+                    <Github className="github-icon" />
                     GitHub
                 </a>
             </div>
