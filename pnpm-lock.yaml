@@ -10,6 +10,7 @@ specifiers:
   '@types/react': ^18.0.9
   '@types/react-dom': ^18.0.4
   '@types/react-test-renderer': ^18.0.0
+  '@zardoy/react-util': ^0.2.0
   '@zardoy/tsconfig': ^1.5.0
   '@zardoy/vit': ^0.1.8
   autoprefixer: ^10.4.5
@@ -39,6 +40,7 @@ dependencies:
   '@material-ui/core': 4.12.4_ohobp6rpsmerwlq5ipwfh5yigy
   '@material-ui/icons': 4.11.3_rk57v6ucfavk63pf5t4yn4d2na
   '@svgdotjs/svg.js': 3.1.2
+  '@zardoy/react-util': 0.2.0_ef5jwxihqo6n7gxfmzogljlgcm
   '@zardoy/tsconfig': 1.5.0_typescript@4.6.4
   jsonfile: 6.1.0
   polished: 4.2.2
@@ -964,6 +966,18 @@ packages:
       - supports-color
     dev: true
 
+  /@zardoy/react-util/0.2.0_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-glABtx54mh4XSaK6BNALWE3mlshPjcPwPsRj/GnOXEA7WJY/6n43iJoukbaYF3758mGZRU5Fq6gklyFjBg0yHQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      classnames: 2.3.2
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
+
   /@zardoy/tsconfig/1.5.0_typescript@4.6.4:
     resolution: {integrity: sha512-/JXxFoKMnUzA2CTD5Ta2oe1emxhPPZ8tkDhEXKlbXJ/rzF26SyT94S7GUkx8NfpBNanRN3B02Eq/bkvhIZmqag==}
     engines: {node: '>=14'}
@@ -1366,6 +1380,10 @@ packages:
   /ci-info/3.3.1:
     resolution: {integrity: sha512-SXgeMX9VwDe7iFFaEWkA5AstuER9YKqy4EhHqr4DVqkwmD9rpVimkMKWHdjn30Ja45txyjhSn63lVX69eVCckg==}
     dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
 
   /clean-regexp/1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
