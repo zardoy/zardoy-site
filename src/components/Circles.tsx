@@ -15,74 +15,37 @@ export default () => {
         }
 
         const divContainer = circlesContainer.current
-        svgs.push(
-            createCircle({
-                divContainer,
-                radius: 60,
-                thickness: 4,
-                expansion: 5,
-                gap: 5,
-                durationSec: 100,
-                onCreate(svg) {
-                    let blur = 3
-                    const updateBlur = () => {
-                        setBlur(svg, blur ? 18 : 0.4)
-                    }
+        const growTime = 3000
+        let keep = 0
+        const keepMax = 5
+        function update() {
+            const [elem] = svgs.splice(0, 1)
+            if (keep++ >= keepMax) elem!.remove()
+            svgs.push(
+                createCircle({
+                    divContainer,
+                    radius: 100,
+                    thickness: 4,
+                    expansion: 5,
+                    opacity: 0.3,
+                    gap: 5,
+                    durationSec: 70,
+                    expandTime: growTime,
+                }),
+            )
+            const lastIdx = svgs.length - 1
+            setBlur(lastIdx, 1)
+            svgs[lastIdx]!.style.opacity = '0'
+            setTimeout(() => {
+                svgs[lastIdx]!.style.opacity = '1'
+                setBlur(lastIdx, 30)
+            }, 5)
+        }
 
-                    updateBlur()
-                    setInterval(() => {
-                        blur++
-                        if (blur === 3) blur = 0
-                        updateBlur()
-                    }, 1500)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 60,
-                thickness: 4,
-                expansion: 5,
-                gap: 5,
-                durationSec: 100,
-                addAnim: true,
-                onCreate(svg) {
-                    setBlur(svg, 1)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 75,
-                initialStart: 140,
-                thickness: 10,
-                fillPerc: 0.3,
-                durationSec: 30,
-                onCreate(svg) {
-                    setBlur(svg, 40)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 100,
-                initialStart: 140,
-                thickness: 20,
-                opacity: 0.3,
-                durationSec: 20,
-                onCreate(svg) {
-                    setBlur(svg, 20)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 160,
-                initialStart: 140,
-                thickness: 20,
-                opacity: 0.3,
-                durationSec: 30,
-                onCreate(svg) {
-                    setBlur(svg, 20)
-                },
-            }),
-        )
+        update()
+        setInterval(() => {
+            update()
+        }, growTime)
 
         return () => {
             location.reload()
@@ -90,7 +53,7 @@ export default () => {
     }, [])
 
     return (
-        <div ref={circlesContainer} className="logo-circles">
+        <div className="logo-circles">
             <div className="Z-name">Z</div>
             <div className="name-after">
                 ARDOY
@@ -103,6 +66,7 @@ export default () => {
                     GitHub
                 </a>
             </div>
+            <div ref={circlesContainer} className="circles" />
         </div>
     )
 }
@@ -117,7 +81,7 @@ function createCircle({
     expansion = 20,
     gap = 10,
     fillPerc = 1,
-    addAnim = false,
+    expandTime: growTime,
     onCreate,
 }: {
     divContainer: HTMLDivElement
@@ -129,7 +93,7 @@ function createCircle({
     expansion?: number
     gap?: number
     fillPerc?: number
-    addAnim?: boolean
+    expandTime?: number
     onCreate?: (svg: SVGElement) => any
 }) {
     // eslint-disable-next-line new-cap
@@ -169,46 +133,47 @@ function createCircle({
     }
 
     const paths = [] as Path[]
-    const updateArcs = () => {
+    let opac = opacity
+    const updateArcs = opac => {
         makeArcs()
         const pathsDiff = arcs.length - paths.length
         for (const _ of Array.from({ length: pathsDiff })) {
             const path = draw.path()
-            path.stroke({ width: thickness, color: `rgba(8, 232, 248, ${opacity})` })
+            path.stroke({ width: thickness, color: `rgba(8, 232, 248, ${(Math.min(opac, 1) * 255).toFixed(0)})` })
             paths.push(path)
         }
 
         for (const [i, arc] of arcs.entries()) paths[i]!.plot(describeArc(...arc))
     }
 
-    updateArcs()
+    updateArcs(opac)
     if (durationSec !== null) {
-        let mult = 1
         animate({
-            timing: t => t * mult * 360,
+            timing: t => t * 360,
             draw(v) {
                 start = v
-                updateArcs()
+                updateArcs(opac)
             },
             duration: durationSec * 1000,
-            infinite: true,
         })
-        if (addAnim) {
-            setTimeout(() => {
-                animate({
-                    // todo rewrite to timing fn
-                    timing: t => {
-                        if (t < 0.85) return 1 + t * 1.3
-                        return 2 + (1 - t) * 0.6
-                    },
-                    draw(t) {
-                        mult = t
-                    },
-                    duration: 600,
-                    infinite: false,
-                })
-            }, 2500)
-        }
+        const initialRadius = radius
+        animate({
+            timing: t => t * 30,
+            draw(v) {
+                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                radius = initialRadius + v
+            },
+            duration: growTime,
+        })
+        const initialOpacity = opacity
+        animate({
+            timing: t => t,
+            draw(v) {
+                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                opac = initialOpacity + v
+            },
+            duration: growTime,
+        })
     }
 
     onCreate?.(draw.node)

@@ -4,7 +4,10 @@
     & > div,
     & > svg {
         position: absolute;
-        transition: filter 2s;
+    }
+    .circles svg {
+        transition: filter 4s cubic-bezier(0.55, 0.06, 0.68, 0.19) 500ms, opacity 600ms;
+        position: absolute;
     }
 
     .Z-name {
@@ -35,6 +38,7 @@
     }
 
     .github-button {
+        display: none;
         font-size: 60px;
         border: 1px solid rgba(8, 232, 248, 0.5);
         padding: 3px 5px;
