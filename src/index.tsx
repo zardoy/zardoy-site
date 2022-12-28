@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
+/// <reference types="vitest/globals" />
+/// <reference types="@zardoy/vit/twin-sc" />
+import { renderToDom } from '@zardoy/react-util'
+import './main.scss'
 
-import App from "./App";
+// import 'tailwindcss/base.css'
+import 'tailwindcss/tailwind.css'
 
-if (process.env.NODE_ENV === "development") {
-    console.clear();
-    localStorage.clear();
-}
+import App from './App'
 
-ReactDOM.render(<App />, document.getElementById("root"));
+renderToDom(<App />, { strictMode: false })
