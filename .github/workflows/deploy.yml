@@ -18,6 +18,8 @@ jobs:
         run: npm install -g pnpm
       - run: pnpm install
       - run: pnpm build
+        env:
+          VITE_REDIRECTS: ${{ secrets.VITE_REDIRECTS }}
       - run: pnpm test
       - uses: peaceiris/actions-gh-pages@v3
         with:
@@ -25,5 +27,3 @@ jobs:
           publish_dir: ./dist
           force_orphan: true
           cname: zardoy.com
-        env:
-          VITE_REDIRECTS: ${{ secrets.VITE_REDIRECTS }}
