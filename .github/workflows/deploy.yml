@@ -6,20 +6,16 @@ on:
 
 jobs:
   build-and-deploy:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
       - uses: actions/cache@v1
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install pnpm
-        # is it faster rather than installing via npm i -g?
-        run: curl -f https://get.pnpm.io/v6.7.js | node - add --global pnpm@6
+        run: npm install -g pnpm
       - run: pnpm install
       - run: pnpm build
       - run: pnpm test
@@ -29,3 +25,5 @@ jobs:
           publish_dir: ./dist
           force_orphan: true
           cname: zardoy.com
+        env:
+          VITE_REDIRECTS: ${{ secrets.VITE_REDIRECTS }}

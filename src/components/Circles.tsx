@@ -99,7 +99,7 @@ export default () => {
                         {'>'}
                         {'>'}
                     </code>
-                    <a className="font-sans rounded github-button" href="https://github.com/zardoy" target="_blank" rel="noopener noreferrer">
+                    <a className="font-sans rounded github-button" href="https://github.com/zardoy" rel="noopener noreferrer">
                         <Github className="github-icon" />
                         GitHub
                     </a>
