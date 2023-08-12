@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
-import { defineVitConfig } from '@zardoy/vit'
+import { defineConfig } from 'vite'
 
-export default defineVitConfig({
+export default defineConfig({
     test: {
         environment: 'jsdom',
     },
+    base: './',
 })
