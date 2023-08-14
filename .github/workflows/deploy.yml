@@ -21,6 +21,7 @@ jobs:
         env:
           VITE_REDIRECTS: ${{ secrets.VITE_REDIRECTS }}
       - run: pnpm test
+      - run: mv dist/index.html dist/404.html
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
