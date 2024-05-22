@@ -18,6 +18,7 @@
         "@svgdotjs/svg.js": "^3.1.2",
         "@zardoy/react-util": "^0.2.0",
         "@zardoy/tsconfig": "^1.5.0",
+        "canvas": "^2.11.2",
         "jsonfile": "^6.1.0",
         "polished": "^4.2.2",
         "rambda": "^7.1.4",
@@ -28,7 +29,7 @@
         "styled-components": "^5.3.5",
         "twin.macro": "^2.8.2",
         "vite": "^4.4.9",
-        "vitest": "^0.34.1"
+        "vitest": "^1.6.0"
     },
     "devDependencies": {
         "@types/jest": "^27.0.1",
@@ -36,7 +37,7 @@
         "@types/react": "^18.2.20",
         "@types/react-dom": "^18.2.7",
         "@types/react-test-renderer": "^18.0.0",
-        "@vitest/ui": "^0.34.1",
+        "@vitest/ui": "^1.6.0",
         "@zardoy/vit": "^0.1.8",
         "autoprefixer": "^10.4.5",
         "eslint": "^8.14.0",
@@ -44,7 +45,7 @@
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.5.0",
         "jest-watch-typeahead": "^0.6.4",
-        "jsdom": "^22.1.0",
+        "jsdom": "^24.0.0",
         "postcss": "^8.4.12",
         "react-test-renderer": "^18.2.0",
         "tailwindcss": "^3.0.24",
