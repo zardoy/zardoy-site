@@ -1,10 +1,19 @@
 import React from 'react'
-import PseudoLoader from './Circles'
+import Circles from './Circles'
 
 const MainBlock: React.FC = () => {
     return (
-        <div tw="h-screen w-full m-0">
-            <PseudoLoader />
+        <div
+            style={{
+                position: 'fixed',
+                inset: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 10,
+            }}
+        >
+            <Circles />
         </div>
     )
 }

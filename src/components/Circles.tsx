@@ -91,19 +91,21 @@ export default () => {
 
     return (
         <div ref={circlesContainer} className="logo-circles">
-            <div className="Z-name">Z</div>
-            <div className="name-after flex flex-nowrap">
-                ARDOY
-                <span className="after-action">
-                    <code>
-                        {'>'}
-                        {'>'}
-                    </code>
-                    <a className="font-sans rounded github-button" href="https://github.com/zardoy" rel="noopener noreferrer">
-                        <Github className="github-icon" />
-                        GitHub
-                    </a>
-                </span>
+            <div className="name-row">
+                <div className="Z-name">Z</div>
+                <div className="name-after flex flex-nowrap">
+                    ARDOY
+                    <span className="after-action">
+                        <code>
+                            {'>'}
+                            {'>'}
+                        </code>
+                        <a className="rounded github-button" href="https://github.com/zardoy" rel="noopener noreferrer">
+                            <Github className="github-icon" />
+                            GITHUB
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     )
