@@ -23,41 +23,9 @@ export default () => {
                 expansion: 5,
                 gap: 5,
                 durationSec: 100,
-                onCreate(svg) {
-                    let blur = 3
-                    const updateBlur = () => {
-                        setBlur(svg, blur ? 18 : 0.4)
-                    }
-
-                    updateBlur()
-                    setInterval(() => {
-                        blur++
-                        if (blur === 3) blur = 0
-                        updateBlur()
-                    }, 1500)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 60,
-                thickness: 4,
-                expansion: 5,
-                gap: 5,
-                durationSec: 100,
                 addAnim: true,
                 onCreate(svg) {
                     setBlur(svg, 1)
-                },
-            }),
-            createCircle({
-                divContainer,
-                radius: 75,
-                initialStart: 140,
-                thickness: 10,
-                fillPerc: 0.3,
-                durationSec: 30,
-                onCreate(svg) {
-                    setBlur(svg, 40)
                 },
             }),
             createCircle({
