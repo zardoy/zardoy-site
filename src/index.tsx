@@ -1,4 +1,5 @@
 /// <reference types="vitest/globals" />
+/// <reference types="vite/client" />
 /// <reference types="@zardoy/vit/twin-sc" />
 import { renderToDom } from '@zardoy/react-util'
 import './main.scss'

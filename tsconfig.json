@@ -1,10 +1,6 @@
 {
     "extends": "@zardoy/tsconfig/react",
-    "compilerOptions": {
-        // for node-environment
-        "esModuleInterop": true,
-        "outDir": ""
-    },
+    "compilerOptions": {},
     "include": [
         "src"
     ]

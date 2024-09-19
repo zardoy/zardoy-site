@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Home from './components/Home'
+import Router from './Router'
 
 interface Props {}
-const App: React.FC<Props> = () => <Home />
+const App: React.FC<Props> = () => <Router />
 
 export default App
