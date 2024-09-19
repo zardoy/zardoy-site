@@ -16,7 +16,7 @@ jobs:
       - run: pnpm build
         env:
           VITE_REDIRECTS: ${{ secrets.VITE_REDIRECTS }}
-          VITE_BATTLE_TAG: ${{ env.BATTLE_TAG }}
+          VITE_BATTLE_TAG: ${{ env.VITE_BATTLE_TAG }}
       - run: pnpm test
       - run: mv dist/index.html dist/404.html
       - uses: peaceiris/actions-gh-pages@v3
