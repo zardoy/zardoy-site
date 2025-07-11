@@ -1,0 +1,6 @@
+ignoredBuiltDependencies:
+  - canvas
+  - styled-components
+
+onlyBuiltDependencies:
+  - esbuild
