@@ -260,7 +260,7 @@ const Scene = () => {
             const wordLength = 'TYPESCRIPT'.length
             const letterSpacing = 2.5
             const totalWidth = wordLength * letterSpacing
-            const startX = -totalWidth / 2 + 1.5
+            const startX = -totalWidth / 2 + 2.5
             const x = startX + (i * letterSpacing)
             // eslint-disable-next-line react/no-array-index-key
             return <BoxLetter key={`${letter}-${i}`} letter={letter} position={[x, 0, 0]} />

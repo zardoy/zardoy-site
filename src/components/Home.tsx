@@ -19,7 +19,7 @@ const ArwesNote = () => {
     return (
         <div
             style={{
-                position: 'fixed',
+                position: 'absolute',
                 bottom: 5,
                 left: 0,
                 right: 0,

@@ -2,6 +2,7 @@ import React from 'react'
 import Typescript from '../Typescript'
 import Circles from './Circles'
 import Bubbles from './Bubbles'
+import ScrollDown from './ScrollDown'
 
 const MainBlock: React.FC = () => {
     return (
@@ -17,9 +18,10 @@ const MainBlock: React.FC = () => {
                 }}
             >
                 <Circles />
+                <ScrollDown />
             </div>
             <Bubbles />
-            {/* <Typescript /> */}
+            <Typescript />
         </div>
     )
 }
