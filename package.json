@@ -21,6 +21,7 @@
         "@types/three": "^0.178.1",
         "@zardoy/react-util": "^0.2.0",
         "@zardoy/tsconfig": "^1.5.0",
+        "framer-motion": "^12.23.3",
         "jsonfile": "^6.1.0",
         "polished": "^4.2.2",
         "rambda": "^7.1.4",

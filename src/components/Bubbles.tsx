@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 
 interface Bubble {
@@ -36,11 +36,21 @@ export default function Component() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hoveredBubble, setHoveredBubble] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMouseInWindow, setIsMouseInWindow] = useState(false)
 
   const animationTypes = ["float-vertical", "float-horizontal", "float-diagonal", "float-circular", "float-figure8"]
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePosition({ x: e.clientX, y: e.clientY })
+  }
+
+  const handleMouseEnter = () => {
+    setIsMouseInWindow(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsMouseInWindow(false)
+    setHoveredBubble(null)
   }
 
   const handleBubbleHover = (bubbleId: number, isHovering: boolean) => {
@@ -86,7 +96,31 @@ export default function Component() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black overflow-hidden relative cursor-none" onMouseMove={handleMouseMove as any}>
+    <div
+      className="min-h-screen bg-black overflow-hidden relative cursor-none"
+      onMouseMove={handleMouseMove as any}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Cursor Spotlight */}
+      <AnimatePresence>
+        {isMouseInWindow && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className={`cursor-spotlight ${hoveredBubble ? 'bubble-hovered' : ''}`}
+            style={{
+              left: `${mousePosition.x}px`,
+              top: `${mousePosition.y}px`,
+            }}
+          >
+            <div className="inner-circle" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Subtle gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-radial from-gray-900/10 via-black/20 to-black pointer-events-none" />
 
@@ -103,7 +137,7 @@ export default function Component() {
           <div
             key={bubble.id}
             id={`bubble-${bubble.id}`}
-            className={`absolute rounded-full bubble ${bubble.animationType} cursor-pointer transition-transform duration-300`}
+            className={`absolute rounded-full bubble ${bubble.animationType} cursor-none transition-transform duration-300`}
             style={{
               width: `${bubble.size}px`,
               height: `${bubble.size}px`,
@@ -151,6 +185,66 @@ export default function Component() {
         .bubble:hover {
           box-shadow: 0 0 30px currentColor, inset 0 0 15px rgba(255, 255, 255, 0.2);
           border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Cursor Spotlight Styles */
+        .cursor-spotlight {
+          pointer-events: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 500px;
+          height: 500px;
+          transform: translate(-50%, -50%);
+          z-index: 999;
+        }
+
+        .cursor-spotlight.bubble-hovered::before,
+        .cursor-spotlight.bubble-hovered::after {
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+
+        .cursor-spotlight::before,
+        .cursor-spotlight::after,
+        .cursor-spotlight .inner-circle {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+        }
+
+        .cursor-spotlight::before,
+        .cursor-spotlight::after {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .cursor-spotlight::before {
+          width: 500px;
+          height: 500px;
+          background: rgba(50, 205, 50, 0.03);
+          box-shadow: 0 0 60px rgba(50, 205, 50, 0.1);
+        }
+
+        .cursor-spotlight::after {
+          width: 80px;
+          height: 80px;
+          background: transparent;
+          border: 2px solid rgb(50, 205, 50);
+          box-shadow: 0 0 15px rgb(50, 205, 50);
+          opacity: 0.8;
+        }
+
+        .cursor-spotlight .inner-circle {
+          top: 50%;
+          left: 50%;
+          width: 15px;
+          height: 15px;
+          transform: translate(-50%, -50%);
+          background: rgb(50, 205, 50);
+          box-shadow: 0 0 20px rgb(50, 205, 50);
+          opacity: 0.9;
         }
 
         @keyframes float-vertical {
