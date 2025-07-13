@@ -270,8 +270,8 @@ const Scene = () => {
         enableZoom
         enablePan
         enableRotate
+        autoRotate
         orbitControlsRef={orbitControlsRef}
-        // autoRotate
         autoRotateSpeed={2}
         target={[0, 0, 0]}
         minDistance={3}
@@ -294,60 +294,55 @@ const Scene = () => {
   )
 }
 
-// Futuristic Play Now Button Component
+// Minecraft-style Play Now Button
 const PlayNowButton = () => {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="translate-y-16 pointer-events-auto">
+      <div className="translate-y-32 pointer-events-auto">
         <a
           href="https://mcraft.fun"
           target="_blank"
           rel="noopener noreferrer"
-          className={`
-            relative group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600
-            text-white font-bold text-xl tracking-wider uppercase
-            transform transition-all duration-300 ease-out
-            ${isHovered ? 'scale-105 shadow-2xl' : 'scale-100 shadow-lg'}
-            hover:from-cyan-400 hover:to-blue-500
-            border-2 border-cyan-400 rounded-lg
-            overflow-hidden
-          `}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="
+            relative group flex items-center gap-3
+            px-10 py-5 bg-[#2196f3] hover:bg-[#1e88e5]
+            text-white font-bold text-2xl tracking-wider uppercase
+            border-2 border-black
+            transition-colors duration-200
+          "
         >
-          {/* Animated background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          {/* Glowing border effect */}
-          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 opacity-75 blur-sm group-hover:blur-md transition-all duration-300" />
-
-          {/* Button text */}
-          <span className="relative z-10 flex items-center gap-2">
-            PLAY NOW
-            <svg
-              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-
-          {/* Scan line effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:animate-pulse" />
+          PLAY NOW
+          <span className="text-3xl leading-none group-hover:translate-x-0.5 transition-transform duration-200">&gt;</span>
         </a>
       </div>
     </div>
   )
 }
 
+// Add this to your global CSS or in a style tag in your component
+const scanAnimation = `
+@keyframes scan {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+`
+
 // eslint-disable-next-line react/function-component-definition
 export default function Component() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    // Add the animation to the document
+    const style = document.createElement('style')
+    style.textContent = scanAnimation
+    document.head.append(style)
+    return () => style.remove()
+  }, [])
 
   // Intersection Observer for visibility optimization
   useEffect(() => {

@@ -1,19 +1,25 @@
 import React from 'react'
+import Typescript from '../Typescript'
 import Circles from './Circles'
+import Bubbles from './Bubbles'
 
 const MainBlock: React.FC = () => {
     return (
-        <div
-            style={{
-                position: 'fixed',
-                inset: 0,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 10,
-            }}
-        >
-            <Circles />
+        <div>
+            <div
+                style={{
+                    width: '100%',
+                    height: '100dvh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 10,
+                }}
+            >
+                <Circles />
+            </div>
+            <Bubbles />
+            {/* <Typescript /> */}
         </div>
     )
 }

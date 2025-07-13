@@ -31,7 +31,7 @@ const ArwesNote = () => {
             }}
         >
             <a href="https://arwes.dev/" rel="noreferrer">
-                by Arwes
+                feat. Arwes
             </a>
         </div>
     )

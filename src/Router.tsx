@@ -3,6 +3,8 @@ import Home from './components/Home'
 import Ow from './components/Ow'
 import { PuffsContainer } from './components/Background'
 import Typescript from './Typescript'
+import NotFound from './NotFound'
+import Bubbles from './components/Bubbles'
 
 const router = createBrowserRouter([
     {
@@ -18,8 +20,12 @@ const router = createBrowserRouter([
         element: <Typescript />,
     },
     {
+        path: '/bubbles',
+        element: <Bubbles />,
+    },
+    {
         path: '/*',
-        element: <PuffsContainer />,
+        element: <NotFound />,
     },
 ])
 
