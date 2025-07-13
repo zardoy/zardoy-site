@@ -30,6 +30,7 @@
         "react-router": "^6.20.1",
         "react-router-dom": "^6.20.1",
         "sass": "^1.57.1",
+        "three": "^0.178.0",
         "twin.macro": "^2.8.2",
         "vite": "^4.4.9",
         "vitest": "^1.6.0"
