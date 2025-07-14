@@ -270,20 +270,8 @@ const PlayNowButton = () => {
                 <button className="py-5 px-16 bg-blue-900/80 text-blue-300 font-mono uppercase tracking-wider rounded relative overflow-hidden group hover:bg-blue-800/75 transition-all duration-300 border border-blue-400">
                     <FaGamepad className="inline-block w-6 h-6 mr-3" />
                     <span className="text-xl font-bold">PLAY NOW</span>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {[...Array.from({ length: 6 })].map((_, i) => (
-                            <div
-                                key={i}
-                                className="absolute w-3 h-3 border-2 border-blue-400 rounded-full animate-ping"
-                                style={{
-                                    left: `${15 + i * 12}%`,
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    animationDelay: `${i * 0.1}s`,
-                                }}
-                            />
-                        ))}
-                    </div>
+                    <div className="absolute right-0 top-0 w-0 h-full bg-blue-400/30 group-hover:w-full transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </button>
             </div>
         </div>
