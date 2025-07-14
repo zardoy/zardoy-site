@@ -272,6 +272,7 @@ const PlayNowButton = () => {
                     <span className="text-xl font-bold">PLAY NOW</span>
                     <div className="absolute right-0 top-0 w-0 h-full bg-blue-400/30 group-hover:w-full transition-all duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    <div className="absolute inset-0 border-2 border-blue-400 rounded opacity-0 group-hover:opacity-100 animate-pulse transition-opacity duration-300" />
                 </button>
             </div>
         </div>
