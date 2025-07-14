@@ -1,6 +1,8 @@
 {
     "extends": "zardoy/react",
     "rules": {
+        "no-useless-return": "off",
+        "react/button-has-type": "off",
         "arrow-body-style": "off",
         "curly": "off"
     },

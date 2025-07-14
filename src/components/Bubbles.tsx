@@ -153,7 +153,7 @@ export default function Component() {
 
             {/* Title */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent select-none">
+                <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r text-center from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent select-none">
                     meet my stack
                 </h1>
             </div>

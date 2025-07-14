@@ -14,7 +14,7 @@ const isMobile = () => {
     return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent)
 }
 
-// Custom OrbitControls that only zooms with Shift+Wheel
+// Custom OrbitControls that only zooms with Shift+Wheel and disables touch on mobile
 const CustomOrbitControls = ({ orbitControlsRef, ...props }) => {
     const { camera, gl } = useThree()
 
@@ -33,6 +33,8 @@ const CustomOrbitControls = ({ orbitControlsRef, ...props }) => {
                 event.stopPropagation()
                 return false
             }
+
+            return
         }
 
         // Add custom wheel listener
@@ -212,7 +214,6 @@ const Scene = () => {
         return state.camera
     })
     const [textRotationY, setTextRotationY] = useState(THREE.MathUtils.degToRad(-45))
-    const [isVisible, setIsVisible] = useState(true)
     const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -225,31 +226,6 @@ const Scene = () => {
             orbitControlsRef.current.update()
         }
     }, [])
-
-    // Intersection Observer for visibility optimization
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            entries => {
-                const entry = entries[0]
-                if (entry) {
-                    setIsVisible(entry.isIntersecting)
-                }
-            },
-            { threshold: 0.1 },
-        )
-
-        if (containerRef.current) {
-            observer.observe(containerRef.current)
-        }
-
-        return () => observer.disconnect()
-    }, [])
-
-    // Only render when visible
-    useFrame(() => {
-        if (!isVisible) return
-        // Frame will be rendered automatically by R3F
-    })
 
     return (
         <>
@@ -295,7 +271,7 @@ const PlayNowButton = () => {
                     <FaGamepad className="inline-block w-6 h-6 mr-3" />
                     <span className="text-xl font-bold">PLAY NOW</span>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {[...Array(6)].map((_, i) => (
+                        {[...Array.from({ length: 6 })].map((_, i) => (
                             <div
                                 key={i}
                                 className="absolute w-3 h-3 border-2 border-blue-400 rounded-full animate-ping"
@@ -358,6 +334,8 @@ export default function Component() {
         return () => observer.disconnect()
     }, [])
 
+    const mobile = isMobile()
+
     return (
         <div ref={containerRef} className="relative w-full h-screen bg-gray-900">
             <motion.div
@@ -374,6 +352,9 @@ export default function Component() {
                             fov: 60,
                         }}
                         frameloop="demand" // Only render when needed
+                        style={{
+                            pointerEvents: mobile ? 'none' : 'auto',
+                        }}
                     >
                         <Scene />
                         {/* GL Stats for development */}
@@ -383,10 +364,12 @@ export default function Component() {
             </motion.div>
             <PlayNowButton />
 
-            {/* Instructions overlay */}
-            <div className="absolute bottom-4 left-4 text-white/70 text-sm">
-                Hold <kbd className="px-2 py-1 bg-white/20 rounded">Shift</kbd> + scroll to zoom
-            </div>
+            {/* Instructions overlay - only show on desktop */}
+            {!mobile && (
+                <div className="absolute bottom-4 left-4 text-white/70 text-sm">
+                    Hold <kbd className="px-2 py-1 bg-white/20 rounded">Shift</kbd> + scroll to zoom
+                </div>
+            )}
         </div>
     )
 }
