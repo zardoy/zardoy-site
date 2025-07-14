@@ -8,7 +8,6 @@ const Home: React.FC<ComponentProps> = () => {
     return (
         <div tw="bg-[rgb(2, 17, 20)] text-white">
             <MainBlock />
-            <PuffsContainer />
             <ArwesNote />
             {/* https://webkul.github.io/coolhue/ */}
         </div>

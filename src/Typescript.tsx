@@ -330,7 +330,6 @@ const scanAnimation = `
 export default function Component() {
     const containerRef = useRef<HTMLDivElement>(null)
     const [isVisible, setIsVisible] = useState(true)
-    const [isSceneLoaded, setIsSceneLoaded] = useState(false)
 
     useEffect(() => {
         // Add the animation to the document
@@ -359,21 +358,13 @@ export default function Component() {
         return () => observer.disconnect()
     }, [])
 
-    // Simulate scene loading delay for smooth fade-in
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsSceneLoaded(true)
-        }, 500) // 500ms delay for smooth fade-in
-
-        return () => clearTimeout(timer)
-    }, [])
-
     return (
         <div ref={containerRef} className="relative w-full h-screen bg-gray-900">
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: isSceneLoaded ? 1 : 0 }}
-                transition={{ duration: 1.5, ease: 'easeOut' }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 3, ease: 'easeInOut' }}
+                exit={{ opacity: 0 }}
                 className="w-full h-full"
             >
                 {isVisible && (

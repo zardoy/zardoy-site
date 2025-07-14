@@ -23,7 +23,6 @@ export default () => {
                 expansion: 5,
                 gap: 5,
                 durationSec: 100,
-                addAnim: true,
                 onCreate(svg) {
                     setBlur(svg, 1)
                 },
