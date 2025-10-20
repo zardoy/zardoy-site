@@ -267,7 +267,7 @@ const PlayNowButton = () => {
     return (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="translate-y-32 pointer-events-auto">
-                <button className="py-5 px-16 bg-blue-900/80 text-blue-300 font-mono uppercase tracking-wider rounded relative overflow-hidden group hover:bg-blue-800/75 transition-all duration-300 border border-blue-400">
+                <button onClick={() => window.open("https://mcraft.fun")} className="py-5 px-16 bg-blue-900/80 text-blue-300 font-mono uppercase tracking-wider rounded relative overflow-hidden group hover:bg-blue-800/75 transition-all duration-300 border border-blue-400">
                     <FaGamepad className="inline-block w-6 h-6 mr-3" />
                     <span className="text-xl font-bold">PLAY NOW</span>
                     <div className="absolute right-0 top-0 w-0 h-full bg-blue-400/30 group-hover:w-full transition-all duration-500" />
